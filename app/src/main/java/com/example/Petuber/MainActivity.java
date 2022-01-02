@@ -1,4 +1,4 @@
-package com.example.instaclone;
+package com.example.Petuber;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,10 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.instaclone.Fragments.HomeFragment;
-import com.example.instaclone.Fragments.NotificationFragment;
-import com.example.instaclone.Fragments.ProfileFragment;
-import com.example.instaclone.Fragments.SearchFragment;
+import com.example.Petuber.Fragments.HomeFragment;
+import com.example.Petuber.Fragments.ProfileFragment;
+import com.example.Petuber.Fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView=findViewById(R.id.bottom_navigation);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

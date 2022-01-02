@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,50 +7,53 @@
     tools:context=".CommentActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        android:id="@+id/toolbar"/>
+        android:background="?android:attr/windowBackground" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
         android:layout_above="@id/bottom"
-        android:id="@+id/recycler_view"/>
+        android:layout_below="@id/toolbar" />
 
     <RelativeLayout
+        android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:layout_alignParentBottom="true"
-        android:padding="5dp"
-        android:id="@+id/bottom">
+        android:padding="5dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_profile"
             android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/image_profile"/>
+            android:layout_height="40dp" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/image_profile"
-            android:hint="Yorum yap ..."
+            android:hint="Yorum ekleyin..."
+            android:id="@+id/add_comment"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:background="@android:color/transparent"
-            android:layout_toLeftOf="@id/post"
-            android:id="@+id/add_comment"/>
+            android:layout_toLeftOf="@id/post"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="POST"
+            android:id="@+id/post"
+            android:text="Paylas"
             android:layout_marginEnd="5dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/post"/>
-
+            android:textColor="@color/colorPrimaryDark"/>
 
     </RelativeLayout>
+
 </RelativeLayout>

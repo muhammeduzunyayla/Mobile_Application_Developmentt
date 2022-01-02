@@ -1,4 +1,4 @@
-package com.example.instaclone.Adapter;
+package com.example.Petuber.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,11 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.instaclone.CommentActivity;
-import com.example.instaclone.Fragments.ProfileFragment;
-import com.example.instaclone.Model.Post;
-import com.example.instaclone.Model.User;
-import com.example.instaclone.R;
+import com.example.Petuber.CommentActivity;
+import com.example.Petuber.Fragments.ProfileFragment;
+import com.example.Petuber.Model.Post;
+import com.example.Petuber.Model.User;
+import com.example.Petuber.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -55,7 +55,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         Picasso.get().load(post.getImageurl()).into(holder.postImage);
         holder.description.setText(post.getDescription());
 
-        FirebaseDatabase.getInstance().getReference().child("Users").child(post.getPublisher()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(post.getPublisher())
+                .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user=snapshot.getValue(User.class);
@@ -83,9 +84,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 if (holder.like.getTag().equals("Like")){
-                    FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).setValue(true);
+                    FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid())
+                            .child(firebaseUser.getUid()).setValue(true);
                 }else{
-                    FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).removeValue();
+                    FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid())
+                            .child(firebaseUser.getUid()).removeValue();
 
                 }
             }
@@ -114,28 +117,30 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.imageProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.getSharedPreferences("PROFILE",Context.MODE_PRIVATE).edit().putString("profileId",post.getPublisher()).apply();
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
+                mContext.getSharedPreferences("PROFILE",Context.MODE_PRIVATE).edit()
+                        .putString("profileId",post.getPublisher()).apply();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,new ProfileFragment()).commit();
             }
         });
+
         holder.username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.getSharedPreferences("PROFILE",Context.MODE_PRIVATE).edit().putString("profileId",post.getPublisher()).apply();
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
+                mContext.getSharedPreferences("PROFILE",Context.MODE_PRIVATE).edit()
+                        .putString("profileId",post.getPublisher()).apply();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,new ProfileFragment()).commit();
             }
         });
+
         holder.author.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.getSharedPreferences("PROFILE",Context.MODE_PRIVATE).edit().putString("profileId",post.getPublisher()).apply();
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
-            }
-        }); holder.postImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit().putString("profileId",post.getPublisher()).apply();
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
+                mContext.getSharedPreferences("PROFILE",Context.MODE_PRIVATE).edit()
+                        .putString("profileId",post.getPublisher()).apply();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,new ProfileFragment()).commit();
             }
         });
     }
@@ -150,7 +155,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public ImageView postImage;
         public ImageView like;
         public ImageView comment;
-        public ImageView more;
 
         public TextView username;
         public TextView noOfLikes;
@@ -166,7 +170,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             postImage=itemView.findViewById(R.id.post_image);
             like=itemView.findViewById(R.id.like);
             comment=itemView.findViewById(R.id.comment);
-            more=itemView.findViewById(R.id.more);
+
 
             username=itemView.findViewById(R.id.username);
             noOfLikes=itemView.findViewById(R.id.no_of_likes);
@@ -211,6 +215,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
         });
     }
+
     private void getComments(String postId,TextView textView){
         FirebaseDatabase.getInstance().getReference().child("Comments").child(postId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -225,5 +230,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         });
 
     }
+
 
 }

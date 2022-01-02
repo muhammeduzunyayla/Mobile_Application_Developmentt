@@ -1,4 +1,4 @@
-package com.example.instaclone.Adapter;
+package com.example.Petuber.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.instaclone.Fragments.ProfileFragment;
-import com.example.instaclone.MainActivity;
-import com.example.instaclone.Model.User;
-import com.example.instaclone.R;
+import com.example.Petuber.Fragments.ProfileFragment;
+import com.example.Petuber.MainActivity;
+import com.example.Petuber.Model.User;
+import com.example.Petuber.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,14 +34,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
     private Context mContext;
     private List<User> mUsers;
-    private boolean isFargment;
+    private boolean isFragment;
 
     private FirebaseUser firebaseUser;
 
-    public UserAdapter(Context mContext, List<User> mUsers, boolean isFargment) {
+    public UserAdapter(Context mContext, List<User> mUsers, boolean isFragment) {
         this.mContext = mContext;
         this.mUsers = mUsers;
-        this.isFargment = isFargment;
+        this.isFragment = isFragment;
     }
 
     @NonNull
@@ -58,7 +58,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
         final User user = mUsers.get(position);
         holder.btnFollow.setVisibility(View.VISIBLE);
-
         holder.username.setText(user.getUsername());
         holder.fullname.setText(user.getName());
 
@@ -70,6 +69,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
             holder.btnFollow.setVisibility(View.GONE);
         }
 
+
         holder.btnFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +80,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
                     FirebaseDatabase.getInstance().getReference().child("Follow").
                             child(user.getId()).child("followers").child(firebaseUser.getUid()).setValue(true);
 
-                    addNotification(user.getId());
                 } else {
                     FirebaseDatabase.getInstance().getReference().child("Follow").
                             child((firebaseUser.getUid())).child("following").child(user.getId()).removeValue();
@@ -94,10 +93,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isFargment) {
-                    mContext.getSharedPreferences("PROFILE", Context.MODE_PRIVATE).edit().putString("profileId", user.getId()).apply();
+                if (isFragment) {
+                    mContext.getSharedPreferences("PROFILE", Context.MODE_PRIVATE).edit()
+                            .putString("profileId", user.getId()).apply();
 
-                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new ProfileFragment()).commit();
                 } else {
                     Intent intent = new Intent(mContext, MainActivity.class);
                     intent.putExtra("publisherId", user.getId());
@@ -151,15 +152,5 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         }
     }
 
-    private void addNotification(String userId) {
-        HashMap<String, Object> map = new HashMap<>();
-
-        map.put("userid", userId);
-        map.put("text", "started following you.");
-        map.put("postid", "");
-        map.put("isPost", false);
-
-        FirebaseDatabase.getInstance().getReference().child("Notifications").child(firebaseUser.getUid()).push().setValue(map);
-    }
 
 }

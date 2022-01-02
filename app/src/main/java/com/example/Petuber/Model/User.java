@@ -1,4 +1,4 @@
-package com.example.instaclone.Model;
+package com.example.Petuber.Model;
 
 public class User {
     private String name;

@@ -1,4 +1,4 @@
-package com.example.instaclone.Fragments;
+package com.example.Petuber.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.instaclone.Adapter.PostAdapter;
-import com.example.instaclone.Model.Post;
-import com.example.instaclone.R;
+import com.example.Petuber.Adapter.PostAdapter;
+import com.example.Petuber.Model.Post;
+import com.example.Petuber.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;

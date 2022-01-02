@@ -1,4 +1,4 @@
-package com.example.instaclone;
+package com.example.Petuber;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.example.instaclone.Adapter;
+package com.example.Petuber.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,9 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.instaclone.Fragments.PostDetailFragment;
-import com.example.instaclone.Model.Post;
-import com.example.instaclone.R;
+import com.example.Petuber.Fragments.PostDetailFragment;
+import com.example.Petuber.Model.Post;
+import com.example.Petuber.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,7 +43,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.Viewholder> 
             public void onClick(View view) {
                 mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit().putString("postId",post.getPostid()).apply();
 
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new PostDetailFragment()).commit();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,new PostDetailFragment()).commit();
             }
         });
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.instaclone">
+    package="com.example.Petuber">
     <!-- crop image permissions -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -13,31 +13,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".OptionsActivity"
+            android:name="com.example.Petuber.OptionsActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name="com.example.Petuber.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".CommentActivity"
+            android:name="com.example.Petuber.CommentActivity"
             android:exported="false" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
-            android:name=".PostActivity"
+            android:name="com.example.Petuber.PostActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.Petuber.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.example.Petuber.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.Petuber.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".StartActivity"
+            android:name="com.example.Petuber.StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

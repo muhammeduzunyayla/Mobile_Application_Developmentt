@@ -1,7 +1,6 @@
-package com.example.instaclone.Adapter;
+package com.example.Petuber.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.instaclone.MainActivity;
-import com.example.instaclone.Model.Comment;
-import com.example.instaclone.Model.User;
-import com.example.instaclone.R;
+import com.example.Petuber.Model.Comment;
+import com.example.Petuber.Model.User;
+import com.example.Petuber.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -53,7 +51,8 @@ public class CommentAdapter  extends RecyclerView.Adapter<CommentAdapter.ViewHol
 
         holder.comment.setText(comment.getComment());
 
-        FirebaseDatabase.getInstance().getReference().child("Users").child(comment.getPublisher()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(comment.getPublisher())
+                .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user=snapshot.getValue(User.class);
@@ -65,6 +64,7 @@ public class CommentAdapter  extends RecyclerView.Adapter<CommentAdapter.ViewHol
                     Picasso.get().load(user.getImageurl()).placeholder(R.mipmap.ic_launcher).into(holder.imageProfile);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }

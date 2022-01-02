@@ -1,4 +1,4 @@
-package com.example.instaclone;
+package com.example.Petuber;
 
 import org.junit.Test;
 

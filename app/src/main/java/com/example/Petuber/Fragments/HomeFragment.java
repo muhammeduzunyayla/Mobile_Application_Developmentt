@@ -1,4 +1,4 @@
-package com.example.instaclone.Fragments;
+package com.example.Petuber.Fragments;
 
 import android.os.Bundle;
 
@@ -11,9 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.instaclone.Adapter.PostAdapter;
-import com.example.instaclone.Model.Post;
-import com.example.instaclone.R;
+import com.example.Petuber.Adapter.PostAdapter;
+import com.example.Petuber.Model.Post;
+import com.example.Petuber.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,7 +54,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void checkFollowingUsers() {
-        FirebaseDatabase.getInstance().getReference().child("Follow").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("following").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Follow").child(FirebaseAuth.getInstance()
+                .getCurrentUser().getUid()).child("following").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 followingList.clear();
@@ -83,7 +84,6 @@ public class HomeFragment extends Fragment {
                     for (String id:followingList){
                         if (post.getPublisher().equals(id)){
                             postList.add(post);
-
                         }
                     }
                 }

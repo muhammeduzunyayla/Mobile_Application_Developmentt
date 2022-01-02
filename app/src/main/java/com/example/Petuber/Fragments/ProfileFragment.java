@@ -1,4 +1,4 @@
-package com.example.instaclone.Fragments;
+package com.example.Petuber.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,16 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.instaclone.Adapter.PhotoAdapter;
-import com.example.instaclone.EditProfileActivity;
-import com.example.instaclone.Model.Post;
-import com.example.instaclone.Model.User;
-import com.example.instaclone.OptionsActivity;
-import com.example.instaclone.R;
+import com.example.Petuber.Adapter.PhotoAdapter;
+import com.example.Petuber.EditProfileActivity;
+import com.example.Petuber.Model.Post;
+import com.example.Petuber.Model.User;
+import com.example.Petuber.OptionsActivity;
+import com.example.Petuber.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -99,8 +98,6 @@ public class ProfileFragment extends Fragment {
         myPhotoList = new ArrayList<>();
         photoAdapter = new PhotoAdapter(getContext(), myPhotoList);
         recyclerView.setAdapter(photoAdapter);
-
-
 
         userInfo();
         getFollowersAndFollowingCount();
