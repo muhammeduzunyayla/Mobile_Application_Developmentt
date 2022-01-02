@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_background"
         android:layout_marginTop="15dp"
-        android:hint="Username"
+        android:hint="Kullanıcı Adı"
         android:padding="10dp"
         android:id="@+id/username"/>
     <EditText
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_background"
         android:layout_marginTop="15dp"
-        android:hint="Name"
+        android:hint="İsminiz"
         android:padding="10dp"
         android:id="@+id/name"/>
     <EditText
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_background"
         android:layout_marginTop="15dp"
-        android:hint="Password"
+        android:hint="Şifreniz"
         android:padding="10dp"
         android:id="@+id/password"/>
     <Button
@@ -49,13 +49,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
         android:layout_marginTop="15dp"
-        android:text="REGISTER"
+        android:text="KAYIT OL"
         android:padding="10dp"
         android:id="@+id/register"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zaten bir hesabin var ise giris yap"
+        android:text="Zaten bir hesabin var ise tıkla"
         android:layout_marginTop="15dp"
         android:id="@+id/login_user"/>
 </LinearLayout>

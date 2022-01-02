@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_background"
         android:layout_marginTop="15dp"
-        android:hint="Password"
+        android:hint="Sifreniz"
         android:padding="10dp"
         android:id="@+id/password"/>
     <Button
@@ -38,13 +38,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
         android:layout_marginTop="15dp"
-        android:text="LOG IN"
+        android:text="Giris Yap"
         android:padding="10dp"
         android:id="@+id/login"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hesab olusturmak icin tikla"
+        android:text="Hesap oluşturmak icin tıkla"
         android:layout_marginTop="15dp"
         android:id="@+id/register_user"/>
 
